@@ -21,7 +21,7 @@ public class Decoder {
 
             if(condition){
 
-                String keyword = regex.getKeyword();
+                String keyword = regex.findKeyword();
                 Question question = new Question(questionPattern,keyword);
                 return question;
 

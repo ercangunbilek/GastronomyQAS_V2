@@ -20,7 +20,7 @@ public class Regex {
         return m.matches();
     }
 
-    public static String getKeyword(){
+    public static String findKeyword(){
         for (int i = 1; i < m.groupCount();i++)
         {
             if(m.group(i) != null && !m.group(i).equals(" ") && i != 7) // 7 unique keyword (make,prepare,etc)
