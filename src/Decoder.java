@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Decoder {
@@ -20,16 +21,19 @@ public class Decoder {
             Boolean condition = regex.isMatch(questionText);
 
             if(condition){
-
                 String keyword = regex.findKeyword();
+
+                if(keyword!=null){
                 Question question = new Question(questionPattern,keyword);
                 return question;
-
-
+                }else{
+                    return null;
+                }
             }
 
         }
 
+        System.out.println("Please,ask valid question!");
         return null;
     }
 

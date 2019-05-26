@@ -8,7 +8,7 @@ public class Query {
 
     public Query(Question question) {
         setQuestion(question);
-        setUrl();
+        url = urlTable.get(question.getQuestionPattern().getQuestionType());
     }
 
 
@@ -24,15 +24,15 @@ public class Query {
         this.question = question;
     }
 
-    private void setUrl(){
-        url = urlTable.get(question.getQuestionPattern().getQuestionType());
+    private void setUrl(String url){
+        this.url = url;
     }
 
     public String getUrl() {
         return url;
     }
 
-    private static void initUrlTable(){
+    public static void initUrlTable(){
         urlTable.put("GetRecipe","https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=1&query={queryKeyword}");
         urlTable.put("GetIngredientCalorie","https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/parseIngredients?includeNutrition=true");
         urlTable.put("GetIngredientList","https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=1&query={queryKeyword}");

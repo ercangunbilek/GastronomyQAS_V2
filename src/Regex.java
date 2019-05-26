@@ -7,9 +7,6 @@ public class Regex {
     private static Pattern p;
     private static Matcher m;
 
-    public Regex(){
-        initKeywordList();
-    }
 
     public static void compile(QuestionPattern questionPattern){
         p = Pattern.compile(questionPattern.getPatternText(),Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
@@ -28,7 +25,6 @@ public class Regex {
                 String word = m.group(i).trim();
                 if(!keywordList.contains(word))
                 {
-
                     return word;
                 }
             }
@@ -37,7 +33,7 @@ public class Regex {
         return null;
     }
 
-    public void initKeywordList(){
+    public static void initKeywordList(){
         keywordList.add("what");
         keywordList.add("how");
         keywordList.add("to");
