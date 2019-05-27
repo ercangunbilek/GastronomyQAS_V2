@@ -11,7 +11,7 @@ public class Main {
         {
             System.out.println("Enter the question please...");
             String questionText = sc.nextLine();
-            VitualChef.askQuestion(questionText);
+            VirtualChief.askQuestion(questionText);
 
         }
     }

@@ -1,6 +1,14 @@
-public class VitualChef {
+public class VirtualChief {
 
-
+    static Cache cache;
+    public VirtualChief()
+    {
+        init();
+    }
+    private void init()
+    {
+        cache = Cache.getInstance();
+    }
     public static void askQuestion(String questionText){
 
 
@@ -10,6 +18,7 @@ public class VitualChef {
         if(question!=null) {
             Query query = question.produceQuery();
             query.executeQuery();
+            Answer answer = cache.getAnswer();
         }
     }
 }
