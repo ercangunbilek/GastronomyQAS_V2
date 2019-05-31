@@ -4,8 +4,7 @@ import com.mashape.unirest.http.JsonNode;
 import java.util.*;
 
 public class Cache {
-private Answer answer;
-private Map<Query,Answer> _answerTable;
+private Map<Question,Answer> _answerTable;
 private APIHelper _apiHelper;
 
 private static Cache cache;
@@ -24,25 +23,21 @@ public static Cache getInstance()
         cache = new Cache();
     return cache;
 }
-public void searchAnswer(Query query)
+    public Answer searchAnswer(Question question)
 {
-    answer = _answerTable.get(query);
+    Answer answer = _answerTable.get(question);
     if(answer == null)
     {
-        HttpResponse<JsonNode> response = _apiHelper.request(query);
+        HttpResponse<JsonNode> response = _apiHelper.request(question);
         answer = new Answer();
         answer = answer.parse(response);
         if(answer != null)
         {
-            _answerTable.put(query,answer);
+            _answerTable.put(question,answer);
         }
 
     }
-}
-public Answer getAnswer()
-{
     return answer;
 }
-
 }
 

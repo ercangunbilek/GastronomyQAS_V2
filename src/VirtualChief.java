@@ -11,14 +11,12 @@ public class VirtualChief {
     }
     public static void askQuestion(String questionText){
 
-
+        KnowledgeManager knowledgeManager = new KnowledgeManager();
         Decoder decoder = new Decoder();
         Question question = decoder.decodeQuestionText(questionText);
 
         if(question!=null) {
-            Query query = question.produceQuery();
-            query.executeQuery();
-            Answer answer = cache.getAnswer();
+            Answer answer = knowledgeManager.findAnswer(question);
         }
     }
 }
