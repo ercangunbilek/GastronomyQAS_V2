@@ -26,10 +26,7 @@ public class Question {
         this.keyword = keyword;
     }
 
-    public Query produceQuery(){
-        Query query = new Query(this);
-        return query;
-    }
+
 
 
 

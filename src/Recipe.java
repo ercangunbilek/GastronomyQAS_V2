@@ -17,10 +17,8 @@ public class Recipe extends AnswerItem {
         name=response.getBody().getObject().getString("name");
         instruction = response.getBody().getObject().getString("instructions");
         instructionTime= response.getBody().getObject().getInt("readyInMinutes");
-
         ingredientList = new ArrayList<Ingredient>();
        // ArrayList<Nutrition> nutritionArrayList = new ArrayList<Nutrition>();
-
         JSONArray ingredientJsonArray = response.getBody().getObject().getJSONObject("nutrition").getJSONArray("ingredients");
 
         for(int i = 0;i<ingredientJsonArray.length();i++){

@@ -1,7 +1,8 @@
 public class VirtualChief {
 
-    static Cache cache;
-    public VirtualChief()
+    private static VirtualChief virtualChief;
+    private static Cache cache;
+    private VirtualChief()
     {
         init();
     }
@@ -18,5 +19,12 @@ public class VirtualChief {
         if(question!=null) {
             Answer answer = knowledgeManager.findAnswer(question);
         }
+    }
+
+    public static VirtualChief getInstance(){
+        if(virtualChief==null)
+            virtualChief = new VirtualChief();
+        return virtualChief;
+
     }
 }

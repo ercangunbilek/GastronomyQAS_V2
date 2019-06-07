@@ -11,17 +11,16 @@ public class Decoder {
 
     public static Question decodeQuestionText(String questionText){
 
-        Regex regex = new Regex();
 
         for(int i=0;i<patternList.size();i++){
 
 
             QuestionPattern questionPattern = patternList.get(i);
-            regex.compile(questionPattern);
-            Boolean condition = regex.isMatch(questionText);
+            Regex.compile(questionPattern);
+            Boolean condition = Regex.isMatch(questionText);
 
             if(condition){
-                String keyword = regex.findKeyword();
+                String keyword = Regex.findKeyword();
 
                 if(keyword!=null){
                 Question question = new Question(questionPattern,keyword);

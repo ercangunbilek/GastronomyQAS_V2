@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-        Query.initUrlTable();
+
         Regex.initKeywordList();
         Scanner sc = new Scanner(System.in);
         while (true)
@@ -14,5 +14,7 @@ public class Main {
             VirtualChief.askQuestion(questionText);
 
         }
+
+
     }
 }

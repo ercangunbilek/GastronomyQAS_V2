@@ -10,11 +10,14 @@ public class APIHelper {
         HttpResponse<JsonNode> response = null;
         switch (question.getQuestionPattern().getQuestionType()) {
             case "Recipe":
-
-                break;
+                QueryStrategy recipeStrategy = new RecipeStrategy();
+                return recipeStrategy.execute(question.getKeyword());
             case "Ingredient":
-
-                break;
+                QueryStrategy ingredientStrategy = new IngredientStrategy();
+                return ingredientStrategy.execute(question.getKeyword());
+            case "Wine":
+                QueryStrategy wineStrategy = new WineStrategy();
+                return wineStrategy.execute(question.getKeyword());
         }
 
         return response;
