@@ -11,8 +11,8 @@ public class Main {
         {
             System.out.println("Enter the question please...");
             String questionText = sc.nextLine();
-            VirtualChief.askQuestion(questionText);
-
+            Answer answer = VirtualChief.askQuestion(questionText);
+            answer.getClass();
         }
 
 

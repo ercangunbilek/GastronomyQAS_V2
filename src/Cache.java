@@ -19,7 +19,7 @@ private Cache()
 }
 public static Cache getInstance()
 {
-    if(cache!=null)
+    if(cache==null)
         cache = new Cache();
     return cache;
 }

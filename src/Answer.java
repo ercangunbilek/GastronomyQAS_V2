@@ -3,6 +3,7 @@ import com.mashape.unirest.http.JsonNode;
 
 public class Answer {
     AnswerFactory answerFactory=new AnswerFactory();
+    AnswerItem answerItem;
     String questionType;
    /* public Answer parse(HttpResponse<JsonNode> response){
         switch (questionType){
@@ -22,7 +23,7 @@ public class Answer {
         return new Answer();
     }*/
    public Answer(HttpResponse<JsonNode> response){
-       AnswerItem answer=answerFactory.getAnswerItem(questionType);
+       answerItem = answerFactory.getAnswerItem(questionType);
    }
 
 }

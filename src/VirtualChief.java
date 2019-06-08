@@ -10,15 +10,16 @@ public class VirtualChief {
     {
         cache = Cache.getInstance();
     }
-    public static void askQuestion(String questionText){
-
+    public static Answer askQuestion(String questionText){
+        Answer answer = null;
         KnowledgeManager knowledgeManager = new KnowledgeManager();
         Decoder decoder = new Decoder();
         Question question = decoder.decodeQuestionText(questionText);
 
         if(question!=null) {
-            Answer answer = knowledgeManager.findAnswer(question);
+            answer = knowledgeManager.findAnswer(question);
         }
+        return answer;
     }
 
     public static VirtualChief getInstance(){
