@@ -20,7 +20,8 @@ public class KnowledgeManager
         {
             APIHelper helper = new APIHelper();
             HttpResponse<JsonNode> response = helper.request(question);
-            answer = answer.parse(response);
+            //answer = answer.parse(response);
+            answer=new Answer(response);
         }
         return answer;
     }

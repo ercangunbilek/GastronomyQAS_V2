@@ -6,27 +6,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ingredient extends AnswerItem  {
+public class Ingredient implements AnswerItem  {
     private double amount;
     private String unit;
     List<Nutrition> nutritionList =null;
-    public Ingredient(HttpResponse<JsonNode> response){
-        //fill properties with response
+    public Ingredient(){
 
-        nutritionList =new ArrayList<Nutrition>();
-        JSONArray nutritionJsonArray;
-        try {
-            nutritionJsonArray = response.getBody().getObject().getJSONObject("nutrition").getJSONArray("nutrients");
-        } catch (Exception e) {
-            nutritionJsonArray=response.getBody().getObject().getJSONArray("nutrients");
-        }
-        for(int i=0;i<nutritionJsonArray.length();i++){
-
-            JSONObject nutritionJsonObject = nutritionJsonArray.getJSONObject(i);
-            Nutrition nutrition = new Nutrition(response);
-            nutritionList.add(nutrition);
-
-        }
     }
     //getter setter methods
     public double getAmount() {
@@ -43,5 +28,26 @@ public class Ingredient extends AnswerItem  {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    @Override
+    public void add(HttpResponse<JsonNode> response) {
+        //fill properties with response
+
+        nutritionList =new ArrayList<Nutrition>();
+        JSONArray nutritionJsonArray;
+        try {
+            nutritionJsonArray = response.getBody().getObject().getJSONObject("nutrition").getJSONArray("nutrients");
+        } catch (Exception e) {
+            nutritionJsonArray=response.getBody().getObject().getJSONArray("nutrients");
+        }
+        for(int i=0;i<nutritionJsonArray.length();i++){
+
+            JSONObject nutritionJsonObject = nutritionJsonArray.getJSONObject(i);
+            //Must create through factory
+            Nutrition nutrition = new Nutrition();
+            nutritionList.add(nutrition);
+
+        }
     }
 }

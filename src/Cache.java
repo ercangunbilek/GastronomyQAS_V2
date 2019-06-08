@@ -29,8 +29,8 @@ public static Cache getInstance()
     if(answer == null)
     {
         HttpResponse<JsonNode> response = _apiHelper.request(question);
-        answer = new Answer();
-        answer = answer.parse(response);
+        answer = new Answer(response);
+       // answer = answer.parse(response);
         if(answer != null)
         {
             _answerTable.put(question,answer);

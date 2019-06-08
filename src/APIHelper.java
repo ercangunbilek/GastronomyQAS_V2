@@ -19,7 +19,6 @@ public class APIHelper {
                 QueryStrategy wineStrategy = new WineStrategy();
                 return wineStrategy.execute(question.getKeyword());
         }
-
         return response;
     }
 }

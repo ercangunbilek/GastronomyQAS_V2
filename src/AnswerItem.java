@@ -1,8 +1,7 @@
-public class AnswerItem {
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
 
-    //overload add method for domain classes
-    public void add(Recipe recipe){}
-    public void add(Nutrition nutrition){}
-    public void add(Ingredient ingredient){}
-    public void add(Wine wine){}
+public interface AnswerItem {
+    public void add(HttpResponse<JsonNode> response);
+
 }

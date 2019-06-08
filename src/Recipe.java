@@ -4,7 +4,7 @@ import org.json.JSONArray;
 
 import java.util.*;
 
-public class Recipe extends AnswerItem {
+public class Recipe implements AnswerItem {
     private String name;
     private String instruction;
     private double instructionTime;
@@ -12,18 +12,8 @@ public class Recipe extends AnswerItem {
     /*  public Recipe(){
           ingredientList=new ArrayList<Ingredient>();
       }*/
-    public Recipe(HttpResponse<JsonNode> response){
-        //fill properties with response
-        name=response.getBody().getObject().getString("name");
-        instruction = response.getBody().getObject().getString("instructions");
-        instructionTime= response.getBody().getObject().getInt("readyInMinutes");
-        ingredientList = new ArrayList<Ingredient>();
-       // ArrayList<Nutrition> nutritionArrayList = new ArrayList<Nutrition>();
-        JSONArray ingredientJsonArray = response.getBody().getObject().getJSONObject("nutrition").getJSONArray("ingredients");
+    public Recipe(){
 
-        for(int i = 0;i<ingredientJsonArray.length();i++){
-            ingredientList.add(new Ingredient(response));
-        }
 
     }
     //getter setter methods
@@ -49,5 +39,22 @@ public class Recipe extends AnswerItem {
 
     public void setInstructionTime(double instructionTime) {
         this.instructionTime = instructionTime;
+    }
+
+    @java.lang.Override
+    public void add(HttpResponse<JsonNode> response) {
+        //fill properties with response
+        name=response.getBody().getObject().getString("name");
+        instruction = response.getBody().getObject().getString("instructions");
+        instructionTime= response.getBody().getObject().getInt("readyInMinutes");
+
+        ingredientList = new ArrayList<Ingredient>();
+        // ArrayList<Nutrition> nutritionArrayList = new ArrayList<Nutrition>();
+
+        JSONArray ingredientJsonArray = response.getBody().getObject().getJSONObject("nutrition").getJSONArray("ingredients");
+
+        for(int i = 0;i<ingredientJsonArray.length();i++){
+            ingredientList.add(new Ingredient());
+        }
     }
 }

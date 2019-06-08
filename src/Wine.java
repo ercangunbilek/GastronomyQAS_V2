@@ -1,12 +1,12 @@
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 
-public class Wine extends AnswerItem  {
+public class Wine implements AnswerItem  {
     private String name;
     private double price;
     private String color;
-    public Wine(HttpResponse<JsonNode> response){
-        //fill properties with response
+    public Wine(){
+
     }
     //getter setter methods
     public String getName() {
@@ -31,5 +31,10 @@ public class Wine extends AnswerItem  {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public void add(HttpResponse<JsonNode> response) {
+        //fill properties with response
     }
 }
