@@ -16,12 +16,25 @@ public class AnswerFactory {
             Recipe recipe = parseJsonRecipe(recipeJsonObject);
             return recipe;
         }
-        /*else if(questionType.equalsIgnoreCase("Ingredient"))
-            return new Ingredient();
-        else if (questionType.equalsIgnoreCase("Nutrition"))
-            return new Nutrition();
+        else if(questionType.equalsIgnoreCase("GetIngredientList"))
+        {
+            JSONObject recipeJsonObject = response.getBody().getObject();
+
+            Recipe recipe = parseJsonRecipe(recipeJsonObject);
+            return recipe;
+        }
+        else if (questionType.equalsIgnoreCase("GetIngredientCalorie"))
+        {
+            JSONObject jsonObject = response.getBody().getArray().getJSONObject(0);
+            return parseJsonIngredient(jsonObject);
+        }
         else if (questionType.equalsIgnoreCase("Wine"))
-            return new Wine();*/
+        {
+            JSONObject wineJsonObject=response.getBody().getObject();
+            Wine wine =  new Wine();
+            wine.setName(wineJsonObject.getString("pairingText"));
+            return wine;
+        }
         return null;
     }
     public Recipe parseJsonRecipe(JSONObject recipeJsonObject)

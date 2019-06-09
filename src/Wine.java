@@ -38,5 +38,6 @@ public class Wine implements AnswerItem  {
     @Override
     public void print() {
 
+        System.out.println(getName());
     }
 }

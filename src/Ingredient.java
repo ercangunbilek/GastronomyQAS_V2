@@ -54,6 +54,10 @@ public class Ingredient implements AnswerItem  {
 
     @Override
     public void print() {
-
+        System.out.println(this.getName() + " , " + this.getAmount() + " ," + this.getUnit());
+        for (Nutrition nutrition : nutritions)
+        {
+            nutrition.print();
+        }
     }
 }

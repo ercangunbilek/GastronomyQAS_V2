@@ -2,26 +2,15 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 
 public class Answer {
-    AnswerFactory answerFactory=new AnswerFactory();
+    AnswerFactory answerFactory;
     AnswerItem answerItem;
-   /* public Answer parse(HttpResponse<JsonNode> response){
-        switch (questionType){
-            case "Recipe":
-                Recipe recipe=answerFactory.getAnswerItem(response);
-                break;
-            case "Ingredient":
-                Ingredient ingredient=answerFactory.getAnswerItem(response);
-                break;
-            case "Nutrition":
-                Nutrition nutrition=answerFactory.getAnswerItem(response);
-                break;
-            case "Wine":
-                Wine wine=answerFactory.getAnswerItem(response);
-                break;
-       }
-        return new Answer();
-    }*/
+
+    private void init()
+    {
+        answerFactory = new AnswerFactory();
+    }
    public Answer(HttpResponse<JsonNode> response,String questionType){
+       init();
        answerItem = answerFactory.getAnswerItem(response,questionType);
    }
 
