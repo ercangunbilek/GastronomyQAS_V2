@@ -33,8 +33,10 @@ public class Wine implements AnswerItem  {
         this.color = color;
     }
 
+
+
     @Override
-    public void add(HttpResponse<JsonNode> response) {
-        //fill properties with response
+    public void print() {
+
     }
 }

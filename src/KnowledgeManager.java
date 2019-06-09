@@ -21,7 +21,7 @@ public class KnowledgeManager
             APIHelper helper = new APIHelper();
             HttpResponse<JsonNode> response = helper.request(question);
             //answer = answer.parse(response);
-            answer=new Answer(response);
+            answer=new Answer(response,question.getQuestionPattern().getQuestionType());
         }
         return answer;
     }

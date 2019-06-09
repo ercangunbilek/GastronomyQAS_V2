@@ -5,25 +5,73 @@ import org.json.JSONArray;
 import java.util.*;
 
 public class Recipe implements AnswerItem {
-    private String name;
     private String instruction;
-    private double instructionTime;
-    private List<Ingredient>ingredientList=null;
+    private int recipeTime;
+    private boolean vegan,glutenFree,vegeterian,ketogenic;
+    private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+
+    public int getRecipeTime() {
+        return recipeTime;
+    }
+
+    public void setRecipeTime(int recipeTime) {
+        this.recipeTime = recipeTime;
+    }
+
+    public boolean isVegan() {
+        return vegan;
+    }
+
+    public void setVegan(boolean vegan) {
+        this.vegan = vegan;
+    }
+
+    public boolean isGlutenFree() {
+        return glutenFree;
+    }
+
+    public void setGlutenFree(boolean glutenFree) {
+        this.glutenFree = glutenFree;
+    }
+
+    public boolean isVegeterian() {
+        return vegeterian;
+    }
+
+    public void setVegeterian(boolean vegeterian) {
+        this.vegeterian = vegeterian;
+    }
+
+    public boolean isKetogenic() {
+        return ketogenic;
+    }
+
+    public void setKetogenic(boolean ketogenic) {
+        this.ketogenic = ketogenic;
+    }
+
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(ArrayList<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     /*  public Recipe(){
-          ingredientList=new ArrayList<Ingredient>();
-      }*/
-    public Recipe(){
+              ingredientList=new ArrayList<Ingredient>();
+          }*/
+    public Recipe(String instruction, int recipeTime, boolean vegan, boolean glutenFree, boolean vegeterian, boolean ketogenic, ArrayList<Ingredient> ingredients) {
 
+        setInstruction(instruction);
+        setRecipeTime(recipeTime);
+        setVegan(vegan);
+        setGlutenFree(glutenFree);
+        setVegeterian(vegeterian);
+        setKetogenic(ketogenic);
+        setIngredients(ingredients);
+    }
 
-    }
-    //getter setter methods
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getInstruction() {
         return instruction;
@@ -32,29 +80,15 @@ public class Recipe implements AnswerItem {
     public void setInstruction(String instruction) {
         this.instruction = instruction;
     }
+    @Override
+    public void print() {
+        System.out.println(("Recipe Time=" + recipeTime + "min\n" +
+                "Instruction='" + instruction + "\n"));
 
-    public double getInstructionTime() {
-        return instructionTime;
-    }
-
-    public void setInstructionTime(double instructionTime) {
-        this.instructionTime = instructionTime;
-    }
-
-    @java.lang.Override
-    public void add(HttpResponse<JsonNode> response) {
-        //fill properties with response
-        name=response.getBody().getObject().getString("name");
-        instruction = response.getBody().getObject().getString("instructions");
-        instructionTime= response.getBody().getObject().getInt("readyInMinutes");
-
-        ingredientList = new ArrayList<Ingredient>();
-        // ArrayList<Nutrition> nutritionArrayList = new ArrayList<Nutrition>();
-
-        JSONArray ingredientJsonArray = response.getBody().getObject().getJSONObject("nutrition").getJSONArray("ingredients");
-
-        for(int i = 0;i<ingredientJsonArray.length();i++){
-            ingredientList.add(new Ingredient());
-        }
+             /*   "Vegan=" +vegan+'\n'+
+                "Gluten Free=" + glutenFree +"\n"+
+                "Vegeterian=" + vegeterian +"\n"+
+                "Ketogenic=" + ketogenic +"\n"+
+                "Ingredients=" + ingredients+"\n"*/;
     }
 }

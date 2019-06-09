@@ -7,12 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ingredient implements AnswerItem  {
+    private String name;
     private double amount;
     private String unit;
-    List<Nutrition> nutritionList =null;
-    public Ingredient(){
+    private ArrayList<Nutrition> nutritions = new ArrayList<Nutrition>();
 
+    public Ingredient(String name, double amount, ArrayList<Nutrition> nutritions,String unitIngredient) {
+        setName(name);
+        setAmount(amount);
+        setNutritions(nutritions);
+        setUnit(unitIngredient);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Nutrition> getNutritions() {
+        return nutritions;
+    }
+
+    public void setNutritions(ArrayList<Nutrition> nutritions) {
+        this.nutritions = nutritions;
+    }
+
     //getter setter methods
     public double getAmount() {
         return amount;
@@ -31,23 +53,7 @@ public class Ingredient implements AnswerItem  {
     }
 
     @Override
-    public void add(HttpResponse<JsonNode> response) {
-        //fill properties with response
+    public void print() {
 
-        nutritionList =new ArrayList<Nutrition>();
-        JSONArray nutritionJsonArray;
-        try {
-            nutritionJsonArray = response.getBody().getObject().getJSONObject("nutrition").getJSONArray("nutrients");
-        } catch (Exception e) {
-            nutritionJsonArray=response.getBody().getObject().getJSONArray("nutrients");
-        }
-        for(int i=0;i<nutritionJsonArray.length();i++){
-
-            JSONObject nutritionJsonObject = nutritionJsonArray.getJSONObject(i);
-            //Must create through factory
-            Nutrition nutrition = new Nutrition();
-            nutritionList.add(nutrition);
-
-        }
     }
 }

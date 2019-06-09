@@ -25,19 +25,7 @@ public static Cache getInstance()
 }
     public Answer searchAnswer(Question question)
 {
-    Answer answer = _answerTable.get(question);
-    if(answer == null)
-    {
-        HttpResponse<JsonNode> response = _apiHelper.request(question);
-        answer = new Answer(response);
-       // answer = answer.parse(response);
-        if(answer != null)
-        {
-            _answerTable.put(question,answer);
-        }
-
-    }
-    return answer;
+    return _answerTable.get(question);
 }
 }
 

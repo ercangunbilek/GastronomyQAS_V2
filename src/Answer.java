@@ -4,7 +4,6 @@ import com.mashape.unirest.http.JsonNode;
 public class Answer {
     AnswerFactory answerFactory=new AnswerFactory();
     AnswerItem answerItem;
-    String questionType;
    /* public Answer parse(HttpResponse<JsonNode> response){
         switch (questionType){
             case "Recipe":
@@ -22,8 +21,8 @@ public class Answer {
        }
         return new Answer();
     }*/
-   public Answer(HttpResponse<JsonNode> response){
-       answerItem = answerFactory.getAnswerItem(questionType);
+   public Answer(HttpResponse<JsonNode> response,String questionType){
+       answerItem = answerFactory.getAnswerItem(response,questionType);
    }
 
 }

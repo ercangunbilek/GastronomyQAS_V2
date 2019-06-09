@@ -9,6 +9,7 @@ public class RecipeStrategy extends QueryStrategy {
     private String _findRecipeByIdURL = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{recipeId}/information?includeNutrition=true";
     @Override
     public HttpResponse<JsonNode> execute(String keyword) {
+        HttpResponse<JsonNode> response = null;
         try {
             HttpResponse<JsonNode> recipe_id = Unirest.get(_searchRecipeURL)
                     .header("X-RapidAPI-Key", _apiKey)
@@ -17,13 +18,13 @@ public class RecipeStrategy extends QueryStrategy {
             JSONObject jsonObject = recipe_id.getBody().getObject().getJSONArray("results").getJSONObject(0);
             int recipeId = jsonObject.getInt("id");
             //get recipe by id . . .
-            HttpResponse<JsonNode> response = Unirest.get(_findRecipeByIdURL)
+            response = Unirest.get(_findRecipeByIdURL)
                     .header("X-RapidAPI-Key", _apiKey)
                     .routeParam("recipeId", String.valueOf(recipeId))
                     .asJson();
         } catch (UnirestException e) {
             e.printStackTrace();
         }
-        return null;
+        return response;
     }
 }

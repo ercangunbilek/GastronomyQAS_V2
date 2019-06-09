@@ -12,7 +12,7 @@ public class Main {
             System.out.println("Enter the question please...");
             String questionText = sc.nextLine();
             Answer answer = VirtualChief.askQuestion(questionText);
-            answer.getClass();
+            answer.answerItem.print();
         }
 
 

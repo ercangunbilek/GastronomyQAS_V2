@@ -5,9 +5,10 @@ public class Nutrition implements AnswerItem  {
     private String name;
     private double amount;
     private String unit;
-    public Nutrition(){
-
-
+    public Nutrition(String name, double amount, String unitNutrition) {
+        setName(name);
+        setAmount(amount);
+        setUnit(unitNutrition);
     }
     //getter setter methods
     public String getName() {
@@ -35,14 +36,11 @@ public class Nutrition implements AnswerItem  {
     }
 
     @Override
-    public void add(HttpResponse<JsonNode> response) {
-        //fill properties with response
-        try {
-            name = response.getBody().getObject().getString("title");
-        }catch (Exception e){
-            name = response.getBody().getObject().getString("name");
-        }
-        amount= response.getBody().getObject().getDouble("amount");
-        unit = response.getBody().getObject().getString("unit");
+    public void print() {
+        System.out.println("Nutrition{" +
+                "name='" + name + '\'' +
+                ", amount=" + amount +
+                ", unitNutrition=" + unit +
+                '}');
     }
 }

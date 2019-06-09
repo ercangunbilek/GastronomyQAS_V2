@@ -37,7 +37,7 @@ public class Decoder {
     }
 
     public void initPatternList(){
-        patternList.add(new QuestionPattern("GetRecipe","([a-z]*)?((\\s)[a-z]*(\\s))*([a-z]*(\\s))?(?<verb>make[a-z]*|prep[a-z]*|cook[a-z]*){1}((\\s)[a-z]*)?((\\s)[a-z]*)?((\\s)[a-z]*)?"));
+        patternList.add(new QuestionPattern("Recipe","([a-z]*)?((\\s)[a-z]*(\\s))*([a-z]*(\\s))?(?<verb>make[a-z]*|prep[a-z]*|cook[a-z]*){1}((\\s)[a-z]*)?((\\s)[a-z]*)?((\\s)[a-z]*)?"));
         patternList.add(new QuestionPattern("GetIngredientCalorie","([a-z]*)?((\\s)[a-z]*(\\s))*([a-z]*(\\s))?(?<verb>cal[a-z]*){1}((\\s)[a-z]*)?((\\s)[a-z]*)?((\\s)[a-z]*)?"));
         patternList.add(new QuestionPattern("GetIngredientList","([a-z]*)?((\\s)[a-z]*(\\s))*([a-z]*(\\s))?(?<verb>ingre[a-z]*|need[a-z]*){1}((\\s)[a-z]*)?((\\s)[a-z]*)?((\\s)[a-z]*)?"));
         patternList.add(new QuestionPattern("GetWine","([a-z]*)?((\\s)[a-z]*(\\s))*([a-z]*(\\s))?(?<verb>wine[a-z]*){1}((\\s)[a-z]*)?((\\s)[a-z]*)?((\\s)[a-z]*)?"));
