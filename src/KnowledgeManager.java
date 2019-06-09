@@ -18,10 +18,10 @@ public class KnowledgeManager
         Answer answer = _cache.searchAnswer(question);
         if(answer == null)
         {
-            APIHelper helper = new APIHelper();
-            HttpResponse<JsonNode> response = helper.request(question);
+            HttpResponse<JsonNode> response = APIHelper.request(question);
             //answer = answer.parse(response);
-            answer=new Answer(response,question.getQuestionPattern().getQuestionType());
+            answer=new Answer();
+            answer.produceAnswer(response,question.getQuestionPattern().getQuestionType());
         }
         return answer;
     }

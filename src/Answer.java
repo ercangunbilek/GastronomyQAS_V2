@@ -5,12 +5,12 @@ public class Answer {
     AnswerFactory answerFactory;
     AnswerItem answerItem;
 
-    private void init()
-    {
-        answerFactory = new AnswerFactory();
-    }
-   public Answer(HttpResponse<JsonNode> response,String questionType){
-       init();
+   public Answer(){
+       answerFactory = new AnswerFactory();
+
+   }
+   public void produceAnswer(HttpResponse<JsonNode> response,String questionType)
+   {
        answerItem = answerFactory.getAnswerItem(response,questionType);
    }
 
