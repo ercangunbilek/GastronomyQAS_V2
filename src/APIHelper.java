@@ -12,7 +12,10 @@ public class APIHelper {
             case "Recipe":
                 QueryStrategy recipeStrategy = new RecipeStrategy();
                 return recipeStrategy.execute(question.getKeyword());
-            case "Ingredient":
+            case "GetIngredientList":
+                QueryStrategy recipeIngredientStrategy = new RecipeStrategy();
+                return recipeIngredientStrategy.execute(question.getKeyword());
+            case "GetIngredientCalorie":
                 QueryStrategy ingredientStrategy = new IngredientStrategy();
                 return ingredientStrategy.execute(question.getKeyword());
             case "Wine":
